@@ -7,25 +7,25 @@ def bilzu_info(mape, atvert=False): # nolasam visus bilžu failus no mapes
     datnes = os.listdir(mape)
     for infile in datnes:
         try:
-            with Image.open(os.path.join(mape,infile)) as im:
-                print(infile, im.format, f"{im.size}x{im.mode}")
+            with Image.open(os.path.join(mape,infile)) as attels:
+                print(infile, attels.format, f"{attels.size}x{attels.mode}")
                 if atvert:
-                    im.show()
+                    attels.show()
         except OSError:
             pass
 
 
-def sikteli(mape):    # nolasītajiem attēlu failiem izveidojam sīktēlus
+def sikteli(mape, lielums):    # nolasītajiem attēlu failiem izveidojam sīktēlus, ar lietotāja norādīto izmēru
     datnes = os.listdir(mape)
-    atteela_platums = int(input("Ievadi samazināmā attēla lielāko dimensiju: "))
-    attela_augstums = atteela_platums
-    size = (atteela_platums, attela_augstums)
+    size = (lielums, lielums)
     for infile in datnes:
-        if not infile.find(".thumbnail") > 0:
+        if not infile.find("_m") > 0:
             try:
-                with Image.open(os.path.join(mape,infile)) as im:
-                    outfile = infile + ".thumbnail."+im.format
-                    im.thumbnail(size)
-                    im.save(os.path.join(mape,outfile), im.format)
+                with Image.open(os.path.join(mape,infile)) as attels:                    
+                    infile = infile.split(sep=".") # noņemam paplašinājumu 
+                    infile = infile[0]                   
+                    outfile = infile + "_m."+attels.format.lower()
+                    attels.thumbnail(size)
+                    attels.save(os.path.join(mape,outfile), attels.format)
             except OSError:
-                print("cannot create thumbnail for", infile)
+                print("Nevar izveidot attlēla sīktēlu: ", infile)

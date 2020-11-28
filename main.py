@@ -2,4 +2,7 @@ from src.bildes import bilzu_info, sikteli
 
 
 bilzu_info("dati")
-sikteli("dati")
+
+izmers = int(input("Ievadi samazināmā attēla lielāko dimensiju: "))
+#izmers = 128
+sikteli("dati", izmers)
