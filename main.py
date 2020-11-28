@@ -1,13 +1,13 @@
 from src.grafiki import linijas, punkti, stabini, histogramma,rinka, zimets
 
-# linijas()
+linijas()
 
-# punkti()
+punkti()
 
-# stabini()
+stabini()
 
-# rinka()
+rinka()
 
-# histogramma()
+histogramma()
 
-# zimets()
+zimets()
