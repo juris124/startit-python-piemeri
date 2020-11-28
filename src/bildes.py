@@ -3,7 +3,7 @@ import os
 from PIL import Image
 
 
-def bilzu_info(mape, atvert=False):
+def bilzu_info(mape, atvert=False): # nolasam visus bilžu failus no mapes
     datnes = os.listdir(mape)
     for infile in datnes:
         try:
@@ -15,9 +15,11 @@ def bilzu_info(mape, atvert=False):
             pass
 
 
-def sikteli(mape):
+def sikteli(mape):    # nolasītajiem attēlu failiem izveidojam sīktēlus
     datnes = os.listdir(mape)
-    size = (128, 128)
+    atteela_platums = int(input("Ievadi samazināmā attēla lielāko dimensiju: "))
+    attela_augstums = atteela_platums
+    size = (atteela_platums, attela_augstums)
     for infile in datnes:
         if not infile.find(".thumbnail") > 0:
             try:
